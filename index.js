@@ -7,6 +7,7 @@ let element = document.getElementById("middle");
 element.onclick = function () {
   startTimer(TIME);
 };
+element.innerHTML = `Start (${timeString(TIME)})`;
 
 element.classList = ["green"];
 let timerRunning = false;
@@ -16,12 +17,8 @@ async function startTimer(secs) {
   timerRunning = true;
   for (let s = secs; s >= 0; s--) {
     console.log();
-    element.innerHTML =
-      Math.floor(s / 60)
-        .toString()
-        .padStart(2, "0") +
-      ":" +
-      (s % 60).toString().padStart(2, "0");
+    element.innerHTML = timeString(s);
+
     await wait(1000);
   }
   element.innerHTML = "Let's go!";
@@ -32,6 +29,16 @@ async function startTimer(secs) {
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function timeString(s) {
+  return (
+    Math.floor(s / 60)
+      .toString()
+      .padStart(2, "0") +
+    ":" +
+    (s % 60).toString().padStart(2, "0")
+  );
 }
 
 function findGetParameter(parameterName) {
@@ -46,3 +53,7 @@ function findGetParameter(parameterName) {
     });
   return result;
 }
+
+document.getElementById("resetbtn").onclick = function () {
+  window.location.reload();
+};
