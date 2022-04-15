@@ -2,7 +2,7 @@ console.log("Hallo");
 
 let STATE = "IDLE";
 let timeParam = parseInt(findGetParameter("time"));
-const TIME = timeParam ?? 60;
+const TIME = timeParam ? timeParam : 60;
 let element = document.getElementById("middle");
 element.onclick = function () {
   startTimer(TIME);
