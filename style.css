@@ -7,7 +7,7 @@
     background-color: rgb(230, 230, 230);
   }
 #middle{
-    width: 30%;
+    width: 50%;
     border-radius: 120px;
     margin: 120px;
     padding: 120px;
@@ -17,6 +17,14 @@
     box-shadow: 0px 20px 40px #47474731;
     cursor: pointer;
     user-select: none;   
+}
+@media (max-width: 600px){
+    #middle{
+        width: 50%;
+        margin: 20px;
+        padding: 20px;
+        font-size: 30px;
+    }
 }
 
 .ticking{
