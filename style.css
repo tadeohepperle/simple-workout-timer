@@ -1,0 +1,35 @@
+.center-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    min-height: 100vh;
+    background-color: rgb(230, 230, 230);
+  }
+#middle{
+    width: 50%;
+    border-radius: 120px;
+    margin: 120px;
+    padding: 120px;
+    font-size: 100px;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    font-weight: bold;
+    box-shadow: 0px 20px 40px #47474731;
+    cursor: pointer;
+    user-select: none;   
+}
+
+.ticking{
+    background-color: white;
+    color: black;
+}
+
+.green{
+    background-color: rgb(121, 230, 172);
+    color: black;
+}
+
+.red{
+    background-color: rgb(176, 0, 0);
+    color: white;
+}
