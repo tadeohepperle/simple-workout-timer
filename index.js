@@ -1,7 +1,8 @@
 console.log("Hallo");
 
 let STATE = "IDLE";
-const TIME = 60;
+let timeParam = parseInt(findGetParameter("time"));
+const TIME = timeParam ?? 60;
 let element = document.getElementById("middle");
 element.onclick = function () {
   startTimer(TIME);
@@ -31,4 +32,17 @@ async function startTimer(secs) {
 
 function wait(ms) {
   return new Promise((resolve) => setTimeout(resolve, ms));
+}
+
+function findGetParameter(parameterName) {
+  var result = null,
+    tmp = [];
+  location.search
+    .substr(1)
+    .split("&")
+    .forEach(function (item) {
+      tmp = item.split("=");
+      if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
+    });
+  return result;
 }
