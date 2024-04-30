@@ -1,16 +1,24 @@
-console.log("Hallo");
-
 let STATE = "IDLE";
-let timeParam = parseInt(findGetParameter("time"));
+
+let params = new URL(document.location).searchParams;
+console.log(params.get("time"));
+
+let timerRunning = false;
+let timeParam = parseInt(params.get("time"));
 const TIME = timeParam ? timeParam : 60;
+
 let element = document.getElementById("middle");
 element.onclick = function () {
   startTimer(TIME);
 };
 element.innerHTML = `Start (${timeString(TIME)})`;
-
 element.classList = ["green"];
-let timerRunning = false;
+
+const autostart = params.get("autostart") !== null;
+if (autostart) {
+  startTimer(TIME);
+}
+
 async function startTimer(secs) {
   if (timerRunning) return;
   element.classList = ["ticking"];
@@ -39,19 +47,6 @@ function timeString(s) {
     ":" +
     (s % 60).toString().padStart(2, "0")
   );
-}
-
-function findGetParameter(parameterName) {
-  var result = null,
-    tmp = [];
-  location.search
-    .substr(1)
-    .split("&")
-    .forEach(function (item) {
-      tmp = item.split("=");
-      if (tmp[0] === parameterName) result = decodeURIComponent(tmp[1]);
-    });
-  return result;
 }
 
 document.getElementById("resetbtn").onclick = function () {
